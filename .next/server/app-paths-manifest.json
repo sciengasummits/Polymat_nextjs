@@ -1,0 +1,10 @@
+{
+  "/api/content/[key]/route": "app/api/content/[key]/route.js",
+  "/api/speakers/route": "app/api/speakers/route.js",
+  "/api/sponsors/route": "app/api/sponsors/route.js",
+  "/faqs/page": "app/faqs/page.js",
+  "/abstract-submission/page": "app/abstract-submission/page.js",
+  "/program/page": "app/program/page.js",
+  "/brochure/page": "app/brochure/page.js",
+  "/page": "app/page.js"
+}

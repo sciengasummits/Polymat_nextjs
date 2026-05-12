@@ -1,0 +1,170 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/components/common/Button/Button.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.btn--primary {
+    background: var(--color-primary-gradient);
+    color: var(--color-white);
+    box-shadow: 0 8px 20px rgba(52, 120, 223, 0.25);
+}
+
+.btn--primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(52, 120, 223, 0.35);
+    filter: brightness(1.1);
+}
+
+.btn--primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 100%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(25deg);
+    transition: none;
+}
+
+.btn--primary:hover::after {
+    left: 200%;
+    transition: left 0.8s ease-in-out;
+}
+
+.btn--outline {
+    background: transparent;
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+}
+
+.btn--outline:hover {
+    background: var(--color-white);
+    color: var(--color-secondary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn--secondary {
+    background: var(--color-white);
+    color: var(--color-secondary-blue);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.btn--secondary:hover {
+    background: #f8f9fa;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/pages_orig/Program/Program.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+.program-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    background: var(--color-bg-light);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.program-icon {
+    width: 100px;
+    height: 100px;
+    background: var(--color-primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 2rem auto;
+    box-shadow: 0 10px 20px rgba(52, 120, 223, 0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.program-placeholder h2 {
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+}
+
+.program-placeholder p {
+    font-size: 1.2rem;
+    color: var(--color-text-body);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+}
+
+.program-timeline-mock {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.timeline-skeleton {
+    height: 60px;
+    background: white;
+    border-radius: 12px;
+    border: 1px dashed #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    opacity: 0.6;
+}
+
+.skeleton-text {
+    width: 60%;
+    height: 10px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+.skeleton-time {
+    width: 20%;
+    height: 10px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    margin-left: auto;
+}

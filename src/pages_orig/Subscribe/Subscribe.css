@@ -1,0 +1,86 @@
+.subscribe-page {
+    background-color: var(--color-bg-light);
+    min-height: 60vh;
+}
+
+.subscribe-layout {
+    display: flex;
+    justify-content: center;
+}
+
+.subscribe-form-wrapper {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 680px;
+}
+
+.subscribe-form-wrapper .form-header {
+    margin-bottom: 1.5rem;
+}
+
+.subscribe-form-wrapper .form-header h3 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: var(--color-text-dark);
+}
+
+.subscribe-form-wrapper .form-header p {
+    color: var(--color-text-body);
+    font-size: 1rem;
+}
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.subscribe-error {
+    color: #e53e3e;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Success state */
+.subscribe-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    padding: 2rem 0;
+}
+
+.subscribe-success__icon {
+    color: #38a169;
+}
+
+.subscribe-success h2 {
+    font-size: 1.8rem;
+    color: var(--color-text-dark);
+}
+
+.subscribe-success p {
+    color: var(--color-text-body);
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+@media (max-width: 576px) {
+    .subscribe-form-wrapper {
+        padding: 1.5rem;
+    }
+}

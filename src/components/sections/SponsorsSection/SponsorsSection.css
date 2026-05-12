@@ -1,0 +1,120 @@
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 220px;
+  -webkit-mask-image: linear-gradient(to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent);
+  mask-image: linear-gradient(to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent);
+}
+
+@media (max-width: 768px) {
+  .marquee-wrapper {
+    gap: 1.25rem;
+    min-height: 180px;
+    -webkit-mask-image: linear-gradient(to right,
+        transparent,
+        black 2%,
+        black 98%,
+        transparent);
+    mask-image: linear-gradient(to right,
+        transparent,
+        black 2%,
+        black 98%,
+        transparent);
+  }
+}
+
+.marquee-row {
+  display: flex;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  width: max-content;
+}
+
+@media (max-width: 768px) {
+  .marquee-row {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.marquee-item {
+  width: 180px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.75rem;
+  background: transparent;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.marquee-item:hover {
+  transform: scale(1.08);
+}
+
+.scroll-left {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.scroll-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+@media (max-width: 768px) {
+
+  .scroll-left,
+  .scroll-right {
+    animation-duration: 25s;
+  }
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee-item {
+    width: 150px;
+    height: 80px;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-item {
+    width: 130px;
+    height: 75px;
+    padding: 0.35rem;
+  }
+}
