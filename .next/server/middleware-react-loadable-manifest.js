@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST='{"components/sections/HeroSection/HeroSection.jsx -> ../../../api/index":{"id":5126,"files":["static/chunks/5126.2ac44b1b251b45a7.js"]}}';
+self.__REACT_LOADABLE_MANIFEST="{\"components/sections/HeroSection/HeroSection.jsx -> ../../../api/index\":{\"id\":\"components/sections/HeroSection/HeroSection.jsx -> ../../../api/index\",\"files\":[\"static/chunks/_app-pages-browser_src_api_index_js.js\"]}}"
