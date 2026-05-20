@@ -1,0 +1,178 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/api/content/[key]",
+      "regex": "^/api/content/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPkey": "nxtPkey"
+      },
+      "namedRegex": "^/api/content/(?<nxtPkey>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/media/[id]",
+      "regex": "^/api/media/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/media/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/speakers/[id]",
+      "regex": "^/api/speakers/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/speakers/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/sessions/[themeId]",
+      "regex": "^/sessions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPthemeId": "nxtPthemeId"
+      },
+      "namedRegex": "^/sessions/(?<nxtPthemeId>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/abstract-submission",
+      "regex": "^/abstract\\-submission(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/abstract\\-submission(?:/)?$"
+    },
+    {
+      "page": "/brochure",
+      "regex": "^/brochure(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/brochure(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/faqs",
+      "regex": "^/faqs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/faqs(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/online-registration",
+      "regex": "^/online\\-registration(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/online\\-registration(?:/)?$"
+    },
+    {
+      "page": "/program",
+      "regex": "^/program(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/program(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/register/discount",
+      "regex": "^/register/discount(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register/discount(?:/)?$"
+    },
+    {
+      "page": "/sessions",
+      "regex": "^/sessions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sessions(?:/)?$"
+    },
+    {
+      "page": "/speakers",
+      "regex": "^/speakers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/speakers(?:/)?$"
+    },
+    {
+      "page": "/sponsors",
+      "regex": "^/sponsors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sponsors(?:/)?$"
+    },
+    {
+      "page": "/subscribe",
+      "regex": "^/subscribe(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/subscribe(?:/)?$"
+    },
+    {
+      "page": "/unsubscribe",
+      "regex": "^/unsubscribe(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/unsubscribe(?:/)?$"
+    },
+    {
+      "page": "/venue",
+      "regex": "^/venue(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/venue(?:/)?$"
+    },
+    {
+      "page": "/visa-info",
+      "regex": "^/visa\\-info(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/visa\\-info(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": []
+}
