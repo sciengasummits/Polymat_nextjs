@@ -4,12 +4,6 @@ import dns from 'dns';
 // ─── Critical Fix: Node.js c-ares DNS fails for mongodb.net on Windows ──────
 dns.setDefaultResultOrder('ipv4first');
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable in .env');
-}
-
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially
@@ -22,6 +16,12 @@ if (!cached) {
 }
 
 async function connectDB() {
+  const MONGODB_URI = process.env.MONGODB_URI;
+
+  if (!MONGODB_URI) {
+    throw new Error('Please define the MONGODB_URI environment variable in .env');
+  }
+
   if (cached.conn) {
     return cached.conn;
   }
