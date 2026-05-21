@@ -1,4 +1,4 @@
-// File: /Users/apple/Downloads/new One /POLYMATSUMMIT2026/src/app/api/sponsors/route.js
+// File: D:\flyhii\Polymat_nextjs\src\app\api\sponsors\route.js
 import * as entry from '../../../../../src/app/api/sponsors/route.js'
 import type { NextRequest } from 'next/server.js'
 

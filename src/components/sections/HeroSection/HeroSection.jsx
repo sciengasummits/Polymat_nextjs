@@ -36,7 +36,9 @@ const HeroSection = () => {
             seconds: Math.floor((diff % (1000 * 60)) / 1000),
         };
     };
-    const [timeLeft, setTimeLeft] = useState(() => calcTimeLeft(DEFAULTS.countdownTarget));
+    // Initialize to null to avoid SSR/client hydration mismatch.
+    // The real value is set in useEffect (client-only).
+    const [timeLeft, setTimeLeft] = useState(null);
     const [collaborations, setCollaborations] = useState([]);
 
     // resolveImageUrl from siteApi.js handles both local (localhost:5050) and
@@ -173,19 +175,19 @@ const HeroSection = () => {
                         <span className="days-to-go-label">Days To Go</span>
                         <div className="hero__countdown">
                             <div className="countdown-item">
-                                <span className="countdown-value">{timeLeft.days}</span>
+                                <span className="countdown-value">{timeLeft?.days ?? '--'}</span>
                                 <span className="countdown-label">Days</span>
                             </div>
                             <div className="countdown-item">
-                                <span className="countdown-value">{timeLeft.hours}</span>
+                                <span className="countdown-value">{timeLeft?.hours ?? '--'}</span>
                                 <span className="countdown-label">Hours</span>
                             </div>
                             <div className="countdown-item">
-                                <span className="countdown-value">{timeLeft.minutes}</span>
+                                <span className="countdown-value">{timeLeft?.minutes ?? '--'}</span>
                                 <span className="countdown-label">Minutes</span>
                             </div>
                             <div className="countdown-item">
-                                <span className="countdown-value">{timeLeft.seconds}</span>
+                                <span className="countdown-value">{timeLeft?.seconds ?? '--'}</span>
                                 <span className="countdown-label">Seconds</span>
                             </div>
                         </div>
