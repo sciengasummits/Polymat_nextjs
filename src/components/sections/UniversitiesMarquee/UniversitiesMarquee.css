@@ -1,8 +1,7 @@
 .universities-marquee {
-    background-color: var(--color-background-alt, #f8f9fa);
-    padding: 2rem 0;
+    background-color: #ffffff;
+    padding: 1rem 0 0.5rem 0;
     overflow: hidden;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     white-space: nowrap;
     position: relative;
 }

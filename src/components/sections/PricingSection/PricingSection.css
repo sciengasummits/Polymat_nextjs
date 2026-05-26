@@ -1,5 +1,5 @@
 .pricing-section-home {
-    background-color: var(--color-bg-light);
+    background-color: #ffffff;
 }
 
 .pricing-cards-container {
@@ -115,14 +115,14 @@
     font-size: 0.9rem;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(52, 120, 223, 0.3);
+    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
     width: 100%;
 }
 
 .btn-register-home:hover {
     filter: brightness(1.2);
     transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(52, 120, 223, 0.4);
+    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
 }
 
 @media (max-width: 992px) {

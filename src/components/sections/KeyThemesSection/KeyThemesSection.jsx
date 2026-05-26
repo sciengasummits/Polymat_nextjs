@@ -149,7 +149,7 @@ const KeyThemesSection = ({ showLearnMore = false }) => {
             <div className="container">
                 <div className="section-header text-center mb-5">
                     <h2 className="section-title">Conference Schedule</h2>
-                    <div className="section-line"></div>
+                    <div className="section-title-underline"></div>
                 </div>
 
                 <div className="sessions-schedule-layout" style={showLearnMore ? { overflow: 'hidden' } : {}}>

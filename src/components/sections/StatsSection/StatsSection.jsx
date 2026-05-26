@@ -69,9 +69,10 @@ const StatsSection = () => {
         <section className="stats-section section-padding">
             <div className="container">
                 <div className="text-center mb-5">
-                    <h2 className="section-title" style={{ marginBottom: '3rem', color: 'var(--color-text-header)' }}>
+                    <h2 className="section-title" style={{ marginBottom: '0.5rem', color: 'var(--color-text-header)' }}>
                         {statsData.title || 'SCIENGA SUMMITS CONFERENCES APPROACH'}
                     </h2>
+                    <div className="section-title-underline" style={{ marginBottom: '3rem' }}></div>
                 </div>
 
                 <div className="stats-grid">

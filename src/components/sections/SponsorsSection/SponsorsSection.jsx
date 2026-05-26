@@ -97,26 +97,14 @@ export default function SponsorsSection() {
         <section id="sponsors" style={{
             padding: 'clamp(2.5rem, 8vw, 5.2rem) 0',
             backgroundColor: '#ffffff',
-            borderTop: '1px solid #e2e8f0',
-            borderBottom: '1px solid #e2e8f0',
             overflow: 'hidden',
         }}>
             <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 6vw, 3rem)' }}>
-                    <h2 style={{
-                        fontSize: 'clamp(1.8rem, 4vw, 2.25rem)',
-                        fontWeight: '800',
-                        color: '#1e293b',
-                        marginBottom: '1rem',
-                        textAlign: 'center',
-                    }}>
+                <div className="section-header text-center" style={{ marginBottom: 'clamp(1.5rem, 6vw, 3rem)' }}>
+                    <h2 className="section-title" style={{ color: '#1e293b' }}>
                         Promoting &amp; Media Partners
                     </h2>
-                    <div style={{
-                        width: '60px', height: '4px',
-                        background: 'var(--brand-gradient, linear-gradient(135deg, #0F172A 0%, #1E40AF 100%))',
-                        margin: '0 auto', borderRadius: '2px',
-                    }}></div>
+                    <div className="section-title-underline"></div>
                 </div>
 
                 <div className="marquee-wrapper">

@@ -157,13 +157,26 @@ const HeroSection = () => {
     };
 
     const bgUrl = resolveUrl(hero.bgImage);
-    const heroBgStyle = bgUrl
+    const bgVideoUrl = resolveUrl(hero.bgVideo);
+    const heroBgStyle = bgUrl && !bgVideoUrl
         ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('${bgUrl}')` }
         : {};
 
     return (
-        <section className="hero" style={heroBgStyle}>
+        <section className={`hero ${(bgUrl || bgVideoUrl) ? 'hero--has-bg' : ''}`} style={heroBgStyle}>
             <div className="hero__overlay"></div>
+            {bgVideoUrl && (
+                <div className="hero__video-wrapper">
+                    <video
+                        src={bgVideoUrl}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="hero__video-bg"
+                    />
+                </div>
+            )}
             <div className="container hero__container">
                 <div className="hero__content">
                     <h1 className="hero__title">

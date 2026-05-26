@@ -53,13 +53,13 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'HOME', path: '/' },
-        { name: 'PROGRAM', path: '/program' },
+        { name: 'SPEAKERS', path: '/speakers' },
         { name: 'SESSIONS', path: '/sessions' },
         { name: 'BROCHURE', path: '/brochure' },
         { name: 'ABSTRACT', path: '/abstract-submission' },
-        { name: 'SPEAKERS', path: '/speakers' },
-        { name: 'SPONSORSHIP', path: '/sponsors' },
         { name: 'REGISTER', path: '/register' },
+        { name: 'PROGRAM', path: '/program' },
+        { name: 'SPONSORSHIP', path: '/sponsors' },
         { name: 'CONTACT', path: '/contact' },
         {
             name: 'MORE',

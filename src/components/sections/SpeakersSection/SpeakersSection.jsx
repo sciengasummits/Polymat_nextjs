@@ -81,11 +81,12 @@ const SpeakersSection = ({ showViewAll }) => {
             <div className="container">
                 <div className="text-center mb-5">
                     <h4 className="section-subtitle">Meet The Experts</h4>
-                    <h2 className="section-title">Global Participants</h2>
+                    <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Global Participants</h2>
+                    <div className="section-title-underline"></div>
                 </div>
 
                 <div className="speakers__filters">
-                    {['All', 'Committee', 'Poster Presenter', 'Student', 'Delegate', 'Plenary Speaker', 'Keynote Speaker', 'Invited Speaker'].map((category) => (
+                    {['All', 'Committee', 'Speakers', 'Plenary Speaker', 'Keynote Speaker', 'Delegates', 'Posters', 'Student'].map((category) => (
                         <button
                             key={category}
                             className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
