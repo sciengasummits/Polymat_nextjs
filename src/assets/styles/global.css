@@ -105,6 +105,14 @@ img {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.page-header .page-title {
+    color: var(--color-white, #ffffff) !important;
+}
+
+.page-header .page-breadcrumb {
+    color: var(--color-white, #ffffff) !important;
+}
+
 .page-breadcrumb {
     font-size: 1.1rem;
     opacity: 0.9;
