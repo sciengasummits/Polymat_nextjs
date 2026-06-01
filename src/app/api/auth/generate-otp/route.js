@@ -30,14 +30,21 @@ export async function POST(req) {
       used: false
     });
 
-    // Send email in background
+    // Send email
     const emailSender = new RealEmailSender();
-    emailSender.sendOTPEmail(account.email, otpCode, account.username, account.conferenceId)
-      .then(result => {
-        if (result.success) console.log(`✅ OTP email sent to: ${account.email}`);
-        else console.log(`⚠️ OTP email failed: ${result.error}`);
-      })
-      .catch(err => console.error('❌ Background Email error:', err.message));
+    let emailResult = { success: true };
+    try {
+      emailResult = await emailSender.sendOTPEmail(account.email, otpCode, account.username, account.conferenceId);
+    } catch (err) {
+      console.error('❌ Background Email error:', err.message);
+      emailResult = { success: false, error: err.message };
+    }
+
+    if (emailResult.success) {
+      console.log(`✅ OTP email sent to: ${account.email}`);
+    } else {
+      console.log(`⚠️ OTP email failed: ${emailResult.error}`);
+    }
 
     return NextResponse.json({
       success: true,
