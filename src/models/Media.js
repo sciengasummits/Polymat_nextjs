@@ -8,4 +8,4 @@ const MediaSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.models.Media || mongoose.model('Media', MediaSchema);
+export default mongoose.models.Media || mongoose.model('Media', MediaSchema, 'media');
