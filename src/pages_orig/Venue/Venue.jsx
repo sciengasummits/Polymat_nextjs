@@ -12,10 +12,41 @@ const Venue = () => {
     const router = useRouter();
     const navigate = (path) => router.push(path);
     const [venueHtml, setVenueHtml] = useState('');
+    const [mapLink, setMapLink] = useState('');
+    const [cityInfo, setCityInfo] = useState({
+        cityName: '',
+        desc1: '',
+        desc2: '',
+        population: '',
+        temperature: '',
+        timezone: '',
+        cityImageUrl: ''
+    });
+    const [attractions, setAttractions] = useState([]);
 
     useEffect(() => {
         fetchContent('venueContent').then(data => {
-            if (data && data.html) setVenueHtml(data.html);
+            if (data) {
+                if (data.html) setVenueHtml(data.html);
+                if (data.mapLink) setMapLink(data.mapLink);
+            }
+        }).catch(() => { });
+
+        fetchContent('hostCityAttractions').then(data => {
+            if (data) {
+                setCityInfo({
+                    cityName: data.cityName || '',
+                    desc1: data.desc1 || '',
+                    desc2: data.desc2 || '',
+                    population: data.population || '',
+                    temperature: data.temperature || '',
+                    timezone: data.timezone || '',
+                    cityImageUrl: data.cityImageUrl || ''
+                });
+                if (Array.isArray(data.attractions) && data.attractions.length > 0) {
+                    setAttractions(data.attractions);
+                }
+            }
         }).catch(() => { });
     }, []);
 
@@ -46,7 +77,7 @@ const Venue = () => {
         }
     ];
 
-    const nearbyAttractions = [
+    const defaultAttractions = [
         {
             name: 'Gardens by the Bay',
             distance: '1.5 km',
@@ -64,6 +95,8 @@ const Venue = () => {
         }
     ];
 
+    const displayAttractions = attractions.length > 0 ? attractions : defaultAttractions;
+
     return (
         <div className="venue-page">
             <div className="page-header">
@@ -80,7 +113,12 @@ const Venue = () => {
                         <div className="about-city-text">
 
                             <h2 className="section-title">About the Host City</h2>
-                            {venueHtml ? (
+                            {(cityInfo.desc1 || cityInfo.desc2) ? (
+                                <>
+                                    {cityInfo.desc1 && <p className="city-description">{cityInfo.desc1}</p>}
+                                    {cityInfo.desc2 && <p className="city-description">{cityInfo.desc2}</p>}
+                                </>
+                            ) : venueHtml ? (
                                 <div className="city-description" dangerouslySetInnerHTML={{ __html: venueHtml }} />
                             ) : (
                                 <>
@@ -99,24 +137,24 @@ const Venue = () => {
                             )}
                             <div className="city-stats" style={{ marginTop: '2rem' }}>
                                 <div className="stat-box">
-                                    <h3>5.6M+</h3>
+                                    <h3>{cityInfo.population || '5.6M+'}</h3>
                                     <p>Population</p>
                                 </div>
                                 <div className="stat-box">
-                                    <h3>31°C</h3>
+                                    <h3>{cityInfo.temperature || '31°C'}</h3>
                                     <p>Avg. Temperature</p>
                                 </div>
                                 <div className="stat-box">
-                                    <h3>GMT+8</h3>
+                                    <h3>{cityInfo.timezone || 'GMT+8'}</h3>
                                     <p>Time Zone</p>
                                 </div>
                             </div>
                         </div>
                         <div className="about-city-image">
                             <img
-                                src="https://tse3.mm.bing.net/th/id/OIP.jJNZIfQn_INbB0uopJI_vgHaFH?w=1024&h=708&rs=1&pid=ImgDetMain&o=7&rm=3"
-                                alt="Singapore City Skyline"
-                                style={{ borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', width: '100%', height: 'auto', display: 'block' }}
+                                src={cityInfo.cityImageUrl || "https://tse3.mm.bing.net/th/id/OIP.jJNZIfQn_INbB0uopJI_vgHaFH?w=1024&h=708&rs=1&pid=ImgDetMain&o=7&rm=3"}
+                                alt={`${cityInfo.cityName || 'Singapore'} City Skyline`}
+                                style={{ borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', width: '100%', height: 'auto', display: 'block', maxHeight: '400px', objectFit: 'cover' }}
                                 onError={(e) => {
                                     e.target.src = "https://tse3.mm.bing.net/th/id/OIP.jJNZIfQn_INbB0uopJI_vgHaFH?w=1024&h=708&rs=1&pid=ImgDetMain&o=7&rm=3";
                                 }}
@@ -125,6 +163,19 @@ const Venue = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Venue Overview Section (Rich Text from Workflow) */}
+            {venueHtml && (cityInfo.desc1 || cityInfo.desc2) && (
+                <section className="venue-rich-text-section section-padding" style={{ background: 'var(--color-bg-white)', borderTop: '1px solid var(--color-border-light)' }}>
+                    <div className="container">
+                        <div className="text-center mb-5">
+                            <h4 className="section-subtitle">Overview</h4>
+                            <h2 className="section-title">Venue Details</h2>
+                        </div>
+                        <div className="venue-rich-content" style={{ maxWidth: '900px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.8' }} dangerouslySetInnerHTML={{ __html: venueHtml }} />
+                    </div>
+                </section>
+            )}
 
             {/* Nearby Attractions */}
             <section className="nearby-attractions section-padding">
@@ -138,11 +189,11 @@ const Venue = () => {
                     </div>
 
                     <div className="attractions-grid">
-                        {nearbyAttractions.map((attraction, index) => (
+                        {displayAttractions.map((attraction, index) => (
                             <div className="attraction-card" key={index}>
                                 <div className="attraction-image">
                                     <img
-                                        src={attraction.image}
+                                        src={attraction.imageUrl || attraction.image}
                                         alt={attraction.name}
                                         onError={(e) => {
                                             e.target.onerror = null;
@@ -159,6 +210,29 @@ const Venue = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Map Section */}
+            {mapLink && (
+                <section className="venue-map-section section-padding" style={{ background: 'var(--color-bg-light)', borderTop: '1px solid var(--color-border-light)' }}>
+                    <div className="container">
+                        <div className="text-center mb-5">
+                            <h4 className="section-subtitle">Location</h4>
+                            <h2 className="section-title">Venue Location Map</h2>
+                        </div>
+                        <div className="venue-map-container" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', height: '450px', width: '100%' }}>
+                            <iframe
+                                src={mapLink}
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Venue Features Section */}
             <section className="venue-features section-padding">

@@ -35,18 +35,61 @@ const VenueSection = () => {
 
     useEffect(() => {
         let cancelled = false;
+
         const load = () => {
-            fetchContent('venue').then(d => {
-                if (!cancelled && d && d.images && d.images.length >= 2) {
-                    setVenueImages(d.images.map((src, i) => ({ id: i + 1, src, alt: `Venue ${i + 1}` })));
+            fetchContent('venueHeroImages').then(d => {
+                if (!cancelled && d && d.images && d.images.length > 0) {
+                    const mapped = d.images.map((img, i) => {
+                        const src = typeof img === 'string' ? img : (img.url || img.src);
+                        const id = typeof img === 'string' ? (i + 1) : (img.id || i + 1);
+                        return {
+                            id,
+                            src,
+                            alt: `Venue ${i + 1}`
+                        };
+                    });
+                    if (mapped.length >= 2) {
+                        setVenueImages(mapped);
+                        return;
+                    }
                 }
-            }).catch(() => {});
+                
+                // Fallback to 'venue'
+                fetchContent('venue').then(d2 => {
+                    if (!cancelled && d2 && d2.images && d2.images.length >= 2) {
+                        const mapped = d2.images.map((src, i) => ({
+                            id: i + 1,
+                            src: typeof src === 'string' ? src : (src.url || src.src),
+                            alt: `Venue ${i + 1}`,
+                        }));
+                        setVenueImages(mapped);
+                    }
+                }).catch(() => {});
+            }).catch(() => {
+                // Fallback on error
+                fetchContent('venue').then(d2 => {
+                    if (!cancelled && d2 && d2.images && d2.images.length >= 2) {
+                        const mapped = d2.images.map((src, i) => ({
+                            id: i + 1,
+                            src: typeof src === 'string' ? src : (src.url || src.src),
+                            alt: `Venue ${i + 1}`,
+                        }));
+                        setVenueImages(mapped);
+                    }
+                }).catch(() => {});
+            });
         };
+
         load();
         const interval = setInterval(load, 30000);
         const onVisible = () => { if (document.visibilityState === 'visible') load(); };
         document.addEventListener('visibilitychange', onVisible);
-        return () => { cancelled = true; clearInterval(interval); document.removeEventListener('visibilitychange', onVisible); };
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+            document.removeEventListener('visibilitychange', onVisible);
+        };
     }, []);
 
     const row1 = venueImages.slice(0, Math.ceil(venueImages.length / 2));
