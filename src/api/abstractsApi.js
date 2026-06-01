@@ -1,5 +1,6 @@
 const BASE_URL = '/api';
 
+
 export async function submitAbstract(payload) {
     const res = await fetch(`${BASE_URL}/abstracts`, {
         method: 'POST',
